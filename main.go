@@ -53,7 +53,7 @@ func main() {
 
 	r.GET("/user-info", func(c *gin.Context) {
 
-		c.JSON(http.StatusOK, User{ID: 123, EMail: "jakub@jakub.cz", Name: "Jakub Englický"})
+		c.JSON(http.StatusOK, gin.H{"user": User{ID: 123, EMail: "jakub@jakub.cz", Name: "Jakub Englický"}})
 	})
 
 	r.POST("/logout", func(c *gin.Context) {
