@@ -56,5 +56,9 @@ func main() {
 		c.JSON(http.StatusOK, User{ID: 123, EMail: "jakub@jakub.cz", Name: "Jakub Englický"})
 	})
 
+	r.POST("/logout", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"status": "logout"})
+	})
+
 	r.Run()
 }
