@@ -27,6 +27,7 @@ func main() {
 
 	config := cors.DefaultConfig()
 	config.AllowAllOrigins = true
+	config.AddAllowHeaders("Accept, Content-Type, Content-Length, Accept-Encoding, Authorization,X-CSRF-Token")
 
 	r.Use(cors.New(config))
 
@@ -50,7 +51,7 @@ func main() {
 
 	})
 
-	r.GET("/user-info/:id", func(c *gin.Context) {
+	r.GET("/user-info", func(c *gin.Context) {
 
 		c.JSON(http.StatusOK, User{ID: 123, EMail: "jakub@jakub.cz", Name: "Jakub Englický"})
 	})
