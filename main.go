@@ -53,7 +53,14 @@ func main() {
 
 	r.GET("/user-info", func(c *gin.Context) {
 
-		c.JSON(http.StatusOK, gin.H{"user": User{ID: 123, EMail: "jakub@jakub.cz", Name: "Jakub Englický"}})
+		var token = c.GetHeader("Authorization")
+
+		if token == "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiMTIzNCIsIm5hbWUiOiJKb2huIERvZSIsImlhdCI6MTUxNjIzOTAyMn0.6sqXAR68gEsFhodi8q3vmMeNRDrsyrHeWQ45RxCQPac" {
+			c.JSON(http.StatusOK, gin.H{"user": User{ID: 123, EMail: "jakub@jakub.cz", Name: "Jakub Englický"}})
+		} else {
+			c.JSON(http.StatusForbidden, gin.H{"error": "Bad credentials"})
+		}
+
 	})
 
 	r.POST("/logout", func(c *gin.Context) {
