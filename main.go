@@ -19,7 +19,6 @@ type User struct {
 
 type Token struct {
 	Token string `json:"token"`
-	ID    int    `json:"id"`
 }
 
 func main() {
@@ -42,7 +41,6 @@ func main() {
 		if requestBody.UserName == "jakub" && requestBody.Password == "jakub" {
 			c.JSON(http.StatusOK, Token{
 				Token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiMTIzNCIsIm5hbWUiOiJKb2huIERvZSIsImlhdCI6MTUxNjIzOTAyMn0.6sqXAR68gEsFhodi8q3vmMeNRDrsyrHeWQ45RxCQPac",
-				ID:    123,
 			})
 
 		} else {
